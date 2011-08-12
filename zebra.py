@@ -53,9 +53,9 @@ class zebra(object):
     def setqueue(self, queue):
         self.queue = queue
 
-    def setup(self, direct_transfer=None, label_height=None, label_width=None):
+    def setup(self, direct_thermal=None, label_height=None, label_width=None):
         commands = '\n'
-        if direct_transfer:
+        if direct_thermal:
             commands += ('OD\n')
         if label_height:
            commands += ('Q%s,%s\n'%(label_height[0],label_height[1]))
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     z = zebra()
     print 'Printer queues found:',z.getqueues()
     z.setqueue('zebra_python_unittest')
-    z.setup(direct_transfer=True, label_height=(406,32), label_width=609)    # 3" x 2" direct transfer label
+    z.setup(direct_thermal=True, label_height=(406,32), label_width=609)    # 3" x 2" direct thermal label
     z.store_graphic('logo','logo.pcx')
     label = """
 N

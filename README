@@ -20,7 +20,7 @@ Usage:
     z.setqueue( printerqueue )
       - Set the printer queue
 
-    z.setup(direct_transfer=None, label_height=None, label_width=None)
+    z.setup(direct_thermal=None, label_height=None, label_width=None)
       - Set up the printer
 
     z.store_graphic(name, filename)
