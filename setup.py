@@ -12,7 +12,7 @@ classifiers = ['Development Status :: 3 - Alpha',
                'Operating System :: Unix',
                'License :: OSI Approved :: MIT License',
                'Programming Language :: Python :: 2.7',
-               'Programming Language :: Python :: 3.2',
+               'Programming Language :: Python :: 3',
                'Topic :: Printing']
 
 long_description = open('README').read()
