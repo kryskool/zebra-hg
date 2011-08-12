@@ -20,10 +20,10 @@ Usage:
     z.setqueue( printerqueue )
       - Set the printer queue
 
-    z.setup(self, direct_transfer=None, label_height=None, label_width=None)
+    z.setup(direct_transfer=None, label_height=None, label_width=None)
       - Set up the printer
 
-    z.store_graphic(self, name, filename)
+    z.store_graphic(name, filename)
        - Store a graphics .PCX file on printer
 
     z.output(commands)

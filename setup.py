@@ -7,8 +7,6 @@ try:
 except ImportError:
    from distutils.command.build_py import build_py
 
-PLATFORM_IS_WINDOWS = sys.platform.lower().startswith('win')
-
 classifiers = ['Development Status :: 3 - Alpha',
                'Operating System :: Microsoft :: Windows',
                'Operating System :: Unix',
@@ -19,7 +17,7 @@ classifiers = ['Development Status :: 3 - Alpha',
 
 long_description = open('README').read()
 
-if PLATFORM_IS_WINDOWS:
+if sys.platform.lower().startswith('win'):
     requires = ['win32print']
 else:
     requires = []

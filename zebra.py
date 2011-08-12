@@ -9,7 +9,7 @@ if sys.platform.lower().startswith('win'):
 
 class zebra(object):
     def __init__(self, queue=None):
-        """queue - name of the printer queue as returned by lpstat -d"""
+        """queue - name of the printer queue"""
         self.queue = queue
 
     def _output_unix(self, commands):
@@ -50,7 +50,7 @@ class zebra(object):
         else:
             return self._getqueues_unix()
 
-    def setqueue(self,queue):
+    def setqueue(self, queue):
         self.queue = queue
 
     def setup(self, direct_transfer=None, label_height=None, label_width=None):
@@ -76,14 +76,14 @@ if __name__ == '__main__':
     z = zebra()
     print 'Printer queues found:',z.getqueues()
     z.setqueue('zebra_python_unittest')
-#    z.setup(direct_transfer=True, label_height=(406,32), label_width=609)    # 3" x 2" label
-#    z.store_graphic('logo','logo.pcx')
+    z.setup(direct_transfer=True, label_height=(406,32), label_width=609)    # 3" x 2" direct transfer label
+    z.store_graphic('logo','logo.pcx')
     label = """
 N
 GG419,40,"logo"
 A40,80,0,4,1,1,N,"Tangerine Duck 4.4%"
 A40,198,0,3,1,1,N,"Duty paid on 39.9l"
-A40,240,0,3,1,1,N,"Gyle: 123     Best Before: 16/09/2011"
+A40,240,0,3,1,1,N,"Gyle: 127     Best Before: 16/09/2011"
 A40,320,0,4,1,1,N,"Pump & Truncheon"
 P1
 """
