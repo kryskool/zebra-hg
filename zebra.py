@@ -28,7 +28,7 @@ class zebra(object):
     
     def output(self, commands):
         assert self.queue is not None
-        if sys.platform.startswith('win'):
+        if sys.platform.lower().startswith('win'):
             self._output_win(commands)
         else:
             self._output_unix(commmands)
@@ -45,7 +45,7 @@ class zebra(object):
         raise Exception('Not yet implemented')
 
     def getqueues(self):
-        if sys.platform.startswith('win'):
+        if sys.platform.lower().startswith('win'):
             return self._getqueues_win()
         else:
             return self._getqueues_unix()
