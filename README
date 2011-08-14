@@ -1,10 +1,9 @@
 ============
-Zebra-0.0.1a
+Zebra-0.0.2a
 ============
 
 Note:
 
-- Windows support is not yet available but is currently being developed.
 - Mac OSX may already be supported but has not been tested
 
 Usage:
@@ -28,4 +27,3 @@ Usage:
 
     z.output(commands)
        - Output EPL2 commands to the printer
-

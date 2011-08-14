@@ -24,7 +24,22 @@ class zebra(object):
         p.stdin.close()
 
     def _output_win(self, commands):
-        raise Exception('Not yet implemented')
+        if self.queue == 'zebra_python_unittest':
+            print commands
+            return
+        if type(commands) != bytes:
+            commands = str(commands).encode()
+        hPrinter = win32print.OpenPrinter(self.queue)
+        try:
+            hJob = win32print.StartDocPrinter(hPrinter, 1, ('Label',None,'RAW'))
+            try:
+                win32print.StartPagePrinter(hPrinter)
+                win32print.WritePrinter(hPrinter, commands)
+                win32print.EndPagePrinter(hPrinter)
+            finally:
+                win32print.EndDocPrinter(hPrinter)
+        finally:
+            win32print.ClosePrinter(hPrinter)
     
     def output(self, commands):
         assert self.queue is not None
@@ -42,7 +57,10 @@ class zebra(object):
         return queues
 
     def _getqueues_win(self):
-        raise Exception('Not yet implemented')
+        printers = []
+        for (a,b,name,d) in win32print.EnumPrinters(win32print.PRINTER_ENUM_LOCAL):
+            printers.append(name)
+        return printers
 
     def getqueues(self):
         if sys.platform.lower().startswith('win'):
