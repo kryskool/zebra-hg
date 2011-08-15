@@ -1,15 +1,20 @@
 #!/usr/bin/env python
-# NOTE: this package is Linux specific at the moment
 
 import subprocess
 import os.path
 import sys
+
 if sys.platform.lower().startswith('win'):
+    IS_WINDOWS = True
     import win32print
+else:
+    IS_WINDOWS = False
 
 class zebra(object):
+    """A class to communicate with (Zebra) label printers using EPL2"""
+
     def __init__(self, queue=None):
-        """queue - name of the printer queue"""
+        """queue - name of the printer queue (optional)"""
         self.queue = queue
 
     def _output_unix(self, commands):
@@ -42,8 +47,12 @@ class zebra(object):
             win32print.ClosePrinter(hPrinter)
     
     def output(self, commands):
+        """Output EPL2 commands to the label printer
+
+        commands - EPL2 commands to send to the printer
+        """
         assert self.queue is not None
-        if sys.platform.lower().startswith('win'):
+        if IS_WINDOWS:
             self._output_win(commands)
         else:
             self._output_unix(commmands)
@@ -63,15 +72,23 @@ class zebra(object):
         return printers
 
     def getqueues(self):
-        if sys.platform.lower().startswith('win'):
+        """Returns a list of printer queues on local machine"""
+        if IS_WINDOWS:
             return self._getqueues_win()
         else:
             return self._getqueues_unix()
 
     def setqueue(self, queue):
+        """Set the printer queue"""
         self.queue = queue
 
     def setup(self, direct_thermal=None, label_height=None, label_width=None):
+        """Set up the label printer. Parameters are not set if they are None.
+
+        direct_thermal - True if using direct thermal labels
+        label_height   - tuple (label height, label gap) in dots
+        label_width    - in dots
+        """
         commands = '\n'
         if direct_thermal:
             commands += ('OD\n')
@@ -82,7 +99,12 @@ class zebra(object):
         self.output(commands)
 
     def store_graphic(self, name, filename):
-        assert filename.endswith('.pcx')
+        """Store a .PCX file on the label printer
+
+        name     - name to be used on printer
+        filename - local filename
+        """
+        assert filename.lower().endswith('.pcx')
         commands = '\nGK"%s"\n'%name
         commands += 'GK"%s"\n'%name
         size = os.path.getsize(filename)

@@ -10,6 +10,8 @@ Usage:
 
 ::
 
+    from zebra import zebra
+
     z = zebra( [printerqueue] )
       - Constructor with optional printerqueue
 
