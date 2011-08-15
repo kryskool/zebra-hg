@@ -11,8 +11,6 @@ classifiers = ['Development Status :: 3 - Alpha',
                'Operating System :: Microsoft :: Windows',
                'Operating System :: Unix',
                'License :: OSI Approved :: MIT License',
-               'Programming Language :: Python',
-               'Programming Language :: Python :: 2.6',
                'Programming Language :: Python :: 2.7',
                'Programming Language :: Python :: 3',
                'Topic :: Printing']
@@ -24,12 +22,12 @@ if sys.platform.lower().startswith('win'):
     try:
         import win32print
     except:
-        raise Exception('Requires the win32print module from the pywin32 package')
+        raise Exception('Requires the win32print module from the pywin32 package.\nDownload from http://pypi.python.org/pypi/pywin32/')
 else:
     requires = []
 
 setup(name             = 'zebra',
-      version          = '0.0.2a',
+      version          = '0.0.3a',
       py_modules       = ['zebra'],
       author           = 'Ben Croston',
       author_email     = 'ben@croston.org',

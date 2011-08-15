@@ -1,5 +1,5 @@
 ============
-Zebra-0.0.2a
+Zebra-0.0.3a
 ============
 
 Note:
@@ -13,27 +13,25 @@ Usage:
     from zebra import zebra
 
     z = zebra( [queue] )
-      - Constructor with optional printer queue
+      Constructor with optional printer queue
 
     z.getqueues()
-      - Return a list containing available printer queues
+      Return a list containing available printer queues
 
     z.setqueue( queue )
-      - Set the printer queue
+      Set the printer queue
 
     z.setup( direct_thermal=None, label_height=None, label_width=None )
       Set up the label printer. Parameters are not set if they are None.
-
         direct_thermal - True if using direct thermal labels
         label_height   - tuple (label height, label gap) in dots
         label_width    - in dots
 
     z.store_graphic( name, filename )
-       Store a .PCX file on the label printer
-
+      Store a .PCX file on the label printer
         name     - name to be used on printer
         filename - local filename
 
     z.output( commands )
-       - Output EPL2 commands to the printer
+      Output EPL2 commands to the printer
 

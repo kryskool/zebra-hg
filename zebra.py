@@ -22,18 +22,13 @@ class zebra(object):
             p = subprocess.Popen(['cat','-'], stdin=subprocess.PIPE)
         else:
             p = subprocess.Popen(['lpr','-P%s'%self.queue], stdin=subprocess.PIPE)
-        if type(commands) == bytes:
-            p.communicate(commands)
-        else:
-            p.communicate(str(commands).encode())
+        p.communicate(commands)
         p.stdin.close()
 
     def _output_win(self, commands):
         if self.queue == 'zebra_python_unittest':
             print commands
             return
-        if type(commands) != bytes:
-            commands = str(commands).encode()
         hPrinter = win32print.OpenPrinter(self.queue)
         try:
             hJob = win32print.StartDocPrinter(hPrinter, 1, ('Label',None,'RAW'))
@@ -52,6 +47,11 @@ class zebra(object):
         commands - EPL2 commands to send to the printer
         """
         assert self.queue is not None
+        if sys.version_info[0] == 3:
+            if type(commands) != bytes:
+                commands = str(commands).encode()
+        else:
+            commands = str(commands).encode()
         if IS_WINDOWS:
             self._output_win(commands)
         else:
