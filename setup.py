@@ -12,6 +12,7 @@ classifiers = ['Development Status :: 3 - Alpha',
                'Operating System :: Unix',
                'License :: OSI Approved :: MIT License',
                'Programming Language :: Python',
+               'Programming Language :: Python :: 2.6',
                'Programming Language :: Python :: 2.7',
                'Programming Language :: Python :: 3',
                'Topic :: Printing']
