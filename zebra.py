@@ -55,7 +55,7 @@ class zebra(object):
         if IS_WINDOWS:
             self._output_win(commands)
         else:
-            self._output_unix(commmands)
+            self._output_unix(commands)
 
     def _getqueues_unix(self):
         queues = []
