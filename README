@@ -2,10 +2,6 @@
 Zebra-0.0.3a
 ============
 
-Note:
-
-- Mac OSX may already be supported but has not been tested
-
 Usage:
 
 ::
@@ -35,3 +31,8 @@ Usage:
     z.output( commands )
       Output EPL2 commands to the printer
 
+Note:
+
+- On Mac and *nix, install the printer as a Raw printer, not a Zebra one.
+If you are on a Linux or MacOSX machine using CUPS, you may need to set up a
+printer queue using the admin panel at http://localhost:631

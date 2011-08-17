@@ -10,6 +10,7 @@ except ImportError:
 classifiers = ['Development Status :: 3 - Alpha',
                'Operating System :: Microsoft :: Windows',
                'Operating System :: Unix',
+               "Operating System :: MacOS :: MacOS X",
                'License :: OSI Approved :: MIT License',
                'Programming Language :: Python :: 2.7',
                'Programming Language :: Python :: 3',
