@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-
-import subprocess
 import os.path
 import sys
 
@@ -9,6 +7,7 @@ if sys.platform.lower().startswith('win'):
     import win32print
 else:
     IS_WINDOWS = False
+    import subprocess
 
 class zebra(object):
     """A class to communicate with (Zebra) label printers using EPL2"""
