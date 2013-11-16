@@ -1,5 +1,5 @@
 ============
-Zebra-0.0.3a
+Zebra-0.0.4a
 ============
 
 Usage:
@@ -36,3 +36,4 @@ Note:
 - On Mac and *nix, install the printer as a Raw printer, not a Zebra one.
 If you are on a Linux or MacOSX machine using CUPS, you may need to set up a
 printer queue using the admin panel at http://localhost:631
+

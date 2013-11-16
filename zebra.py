@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2011 Ben Croston
+# Copyright (c) 2011-2013 Ben Croston
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -60,7 +60,7 @@ class zebra(object):
                 win32print.EndDocPrinter(hPrinter)
         finally:
             win32print.ClosePrinter(hPrinter)
-    
+
     def output(self, commands):
         """Output EPL2 commands to the label printer
 
@@ -79,7 +79,10 @@ class zebra(object):
 
     def _getqueues_unix(self):
         queues = []
-        output = subprocess.check_output(['lpstat','-p'], universal_newlines=True)
+        try:
+            output = subprocess.check_output(['lpstat','-p'], universal_newlines=True)
+        except subprocess.CalledProcessError:
+            return []
         for line in output.split('\n'):
             if line.startswith('printer'):
                 queues.append(line.split(' ')[1])

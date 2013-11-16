@@ -20,16 +20,12 @@ classifiers = ['Development Status :: 3 - Alpha',
 long_description = open('README').read()
 
 if sys.platform.lower().startswith('win'):
-    requires = ['win32print']
-    try:
-        import win32print
-    except:
-        raise Exception('Requires the win32print module from the pywin32 package.\nDownload from http://pypi.python.org/pypi/pywin32/')
+    install_requires = 'win32print'
 else:
-    requires = []
+    install_requires = None
 
 setup(name             = 'zebra',
-      version          = '0.0.3a',
+      version          = '0.0.4a',
       py_modules       = ['zebra'],
       author           = 'Ben Croston',
       author_email     = 'ben@croston.org',
@@ -42,6 +38,6 @@ setup(name             = 'zebra',
       classifiers      = classifiers,
       license          = 'MIT',
       cmdclass         = {'build_py': build_py},
-      requires         = requires,
+      install_requires = install_requires
       )
 
