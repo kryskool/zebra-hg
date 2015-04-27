@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2011-2013 Ben Croston
+# Copyright (c) 2011-2015 Ben Croston
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -41,7 +41,7 @@ class zebra(object):
         if self.queue == 'zebra_python_unittest':
             p = subprocess.Popen(['cat','-'], stdin=subprocess.PIPE)
         else:
-            p = subprocess.Popen(['lpr','-P%s'%self.queue], stdin=subprocess.PIPE)
+            p = subprocess.Popen(['lpr','-P{}'.format(self.queue),'-oraw'], stdin=subprocess.PIPE)
         p.communicate(commands)
         p.stdin.close()
 

@@ -7,7 +7,7 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
-classifiers = ['Development Status :: 3 - Alpha',
+classifiers = ['Development Status :: 5 - Production/Stable',
                'Operating System :: Microsoft :: Windows',
                'Operating System :: Unix',
                "Operating System :: MacOS :: MacOS X",
@@ -25,7 +25,7 @@ else:
     install_requires = None
 
 setup(name             = 'zebra',
-      version          = '0.0.4a',
+      version          = '0.0.5',
       py_modules       = ['zebra'],
       author           = 'Ben Croston',
       author_email     = 'ben@croston.org',
@@ -40,4 +40,3 @@ setup(name             = 'zebra',
       cmdclass         = {'build_py': build_py},
       install_requires = install_requires
       )
-
